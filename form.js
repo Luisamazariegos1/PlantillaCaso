@@ -1,50 +1,55 @@
-// form.js
-function generatePDF() {
-    // Importar jsPDF desde el objeto global `window.jspdf`
+async function generatePDF() {
+    console.log('Función generatePDF ejecutada');
     const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
+    let doc = new jsPDF();
 
-    // Obtener el formulario y los datos
-    const form = document.getElementById('useCaseForm');
-    const formData = new FormData(form);
+    // Obtén los valores de los campos del formulario
+    const name = document.getElementById('name').value;
+    const description = document.getElementById('description').value;
+    const actors = document.getElementById('actors').value;
+    const preconditions = document.getElementById('preconditions').value;
+    const postconditions = document.getElementById('postconditions').value;
+    const mainFlow = document.getElementById('mainFlow').value;
+    const alternativeFlows = document.getElementById('alternativeFlows').value;
+    const exceptions = document.getElementById('exceptions').value;
+    const specialRequirements = document.getElementById('specialRequirements').value;
+    const interfaces = document.getElementById('interfaces').value;
 
-    // Título del PDF
+    // Define el contenido del PDF
     doc.setFontSize(16);
-    doc.text('Formulario de Caso de Uso', 10, 10);
+    doc.text('Formulario de Caso de Uso', 14, 20);
 
-    // Configuración de la fuente y el tamaño
     doc.setFontSize(12);
+    doc.text('Nombre del Caso de Uso:', 14, 30);
+    doc.text(name, 14, 40);
 
-    // Función para agregar texto y manejar el desbordamiento
-    let y = 20; // Posición vertical inicial
-    const lineHeight = 10;
-    const margin = 10;
-    const pageWidth = doc.internal.pageSize.getWidth() - 2 * margin;
+    doc.text('Descripción General:', 14, 50);
+    doc.text(description, 14, 60);
 
-    function addText(text) {
-        const textLines = doc.splitTextToSize(text, pageWidth);
-        textLines.forEach(line => {
-            if (y + lineHeight > doc.internal.pageSize.height) {
-                doc.addPage();
-                y = margin;
-            }
-            doc.text(line, margin, y);
-            y += lineHeight;
-        });
-    }
+    doc.text('Actores Principales:', 14, 70);
+    doc.text(actors, 14, 80);
 
-    // Agregar campos del formulario al PDF
-    addText('Nombre del Caso de Uso: ' + formData.get('name'));
-    addText('Descripción General: ' + formData.get('description'));
-    addText('Actores Principales: ' + formData.get('actors'));
-    addText('Precondiciones: ' + formData.get('preconditions'));
-    addText('Postcondiciones: ' + formData.get('postconditions'));
-    addText('Flujo Principal: ' + formData.get('mainFlow'));
-    addText('Flujos Alternativos: ' + formData.get('alternativeFlows'));
-    addText('Excepciones: ' + formData.get('exceptions'));
-    addText('Requerimientos Especiales: ' + formData.get('specialRequirements'));
-    addText('Requisitos de Interfaz: ' + formData.get('interfaces'));
+    doc.text('Precondiciones:', 14, 90);
+    doc.text(preconditions, 14, 100);
 
-    // Guardar el PDF
-    doc.save('caso_de_uso.pdf');
+    doc.text('Postcondiciones:', 14, 110);
+    doc.text(postconditions, 14, 120);
+
+    doc.text('Flujo Principal:', 14, 130);
+    doc.text(mainFlow, 14, 140);
+
+    doc.text('Flujos Alternativos:', 14, 150);
+    doc.text(alternativeFlows, 14, 160);
+
+    doc.text('Excepciones:', 14, 170);
+    doc.text(exceptions, 14, 180);
+
+    doc.text('Requerimientos Especiales:', 14, 190);
+    doc.text(specialRequirements, 14, 200);
+
+    doc.text('Requisitos de Interfaz:', 14, 210);
+    doc.text(interfaces, 14, 220);
+
+    // Guarda el PDF
+    doc.save('Formulario_Caso_de_Uso.pdf');
 }

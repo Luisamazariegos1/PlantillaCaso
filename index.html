@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Caso de Uso</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Formulario de Caso de Uso</h1>
+        <form id="use-case-form">
+            <label for="title">Título del Caso de Uso:</label>
+            <input type="text" id="title" name="title" required>
+            
+            <label for="actors">Actores:</label>
+            <input type="text" id="actors" name="actors" required>
+            
+            <label for="description">Descripción:</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+            
+            <label for="preconditions">Precondiciones:</label>
+            <textarea id="preconditions" name="preconditions" rows="4" required></textarea>
+            
+            <label for="main-flow">Flujo Principal de Eventos:</label>
+            <textarea id="main-flow" name="main-flow" rows="4" required></textarea>
+            
+            <label for="alternative-flows">Flujos Alternativos:</label>
+            <textarea id="alternative-flows" name="alternative-flows" rows="4" required></textarea>
+            
+            <label for="postconditions">Postcondiciones:</label>
+            <textarea id="postconditions" name="postconditions" rows="4" required></textarea>
+            
+            <label for="special-requirements">Requisitos Especiales:</label>
+            <textarea id="special-requirements" name="special-requirements" rows="4" required></textarea>
+            
+            <button type="submit">Enviar</button>
+        </form>
+        <button id="print-button">Imprimir en PDF</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

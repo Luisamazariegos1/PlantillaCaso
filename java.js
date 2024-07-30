@@ -1,4 +1,3 @@
-
 document.getElementById('print-button').addEventListener('click', function () {
     // Crear un iframe oculto para la impresión
     var iframe = document.createElement('iframe');
@@ -11,7 +10,14 @@ document.getElementById('print-button').addEventListener('click', function () {
     var doc = iframe.contentWindow.document;
     doc.open();
     doc.write('<html><head><title>Imprimir en PDF</title>');
-    doc.write('<link rel="stylesheet" type="text/css" href="styles.css">');
+    doc.write('<style>');
+    doc.write('body { font-family: Arial, sans-serif; margin: 20px; }');
+    doc.write('label { display: block; margin: 10px 0 5px; font-weight: bold; color: #555; }');
+    doc.write('input, textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; }');
+    doc.write('textarea { resize: vertical; }');
+    doc.write('button { padding: 12px 20px; background-color: #007bff; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }');
+    doc.write('button:hover { background-color: #0056b3; }');
+    doc.write('</style>');
     doc.write('</head><body>');
     doc.write(document.querySelector('.container').outerHTML);
     doc.write('</body></html>');

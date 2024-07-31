@@ -5,6 +5,7 @@ async function generatePDF() {
 
     // Obtén los valores de los campos del formulario
     const name = document.getElementById('name').value;
+    const date = document.getElementById('date').value;  // Añadido para capturar la fecha
     const description = document.getElementById('description').value;
     const actors = document.getElementById('actors').value;
     const preconditions = document.getElementById('preconditions').value;
@@ -23,32 +24,35 @@ async function generatePDF() {
     doc.text('Nombre del Caso de Uso:', 14, 30);
     doc.text(name, 14, 40);
 
-    doc.text('Descripción General:', 14, 50);
-    doc.text(description, 14, 60);
+    doc.text('Fecha:', 14, 50);
+    doc.text(date, 14, 60);  // Añadido para mostrar la fecha
 
-    doc.text('Actores Principales:', 14, 70);
-    doc.text(actors, 14, 80);
+    doc.text('Descripción General:', 14, 70);
+    doc.text(description, 14, 80);
 
-    doc.text('Precondiciones:', 14, 90);
-    doc.text(preconditions, 14, 100);
+    doc.text('Actores Principales:', 14, 90);
+    doc.text(actors, 14, 100);
 
-    doc.text('Postcondiciones:', 14, 110);
-    doc.text(postconditions, 14, 120);
+    doc.text('Precondiciones:', 14, 110);
+    doc.text(preconditions, 14, 120);
 
-    doc.text('Flujo Principal:', 14, 130);
-    doc.text(mainFlow, 14, 140);
+    doc.text('Postcondiciones:', 14, 130);
+    doc.text(postconditions, 14, 140);
 
-    doc.text('Flujos Alternativos:', 14, 150);
-    doc.text(alternativeFlows, 14, 160);
+    doc.text('Flujo Principal:', 14, 150);
+    doc.text(mainFlow, 14, 160);
 
-    doc.text('Excepciones:', 14, 170);
-    doc.text(exceptions, 14, 180);
+    doc.text('Flujos Alternativos:', 14, 170);
+    doc.text(alternativeFlows, 14, 180);
 
-    doc.text('Requerimientos Especiales:', 14, 190);
-    doc.text(specialRequirements, 14, 200);
+    doc.text('Excepciones:', 14, 190);
+    doc.text(exceptions, 14, 200);
 
-    doc.text('Requisitos de Interfaz:', 14, 210);
-    doc.text(interfaces, 14, 220);
+    doc.text('Requerimientos Especiales:', 14, 210);
+    doc.text(specialRequirements, 14, 220);
+
+    doc.text('Requisitos de Interfaz:', 14, 230);
+    doc.text(interfaces, 14, 240);
 
     // Guarda el PDF
     doc.save('Formulario_Caso_de_Uso.pdf');
